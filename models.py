@@ -11,10 +11,6 @@ class User(Base):
     email = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)
 
-    #transactions = relationship(
-       # "Transaction", back_populates="owner", cascade="all, delete-orphan"
-   ## )
-
 
 class Transaction(Base):
     __tablename__ = "transactions"
@@ -27,4 +23,3 @@ class Transaction(Base):
     date = Column(Date, nullable=False)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
-   # owner = relationship("User", back_populates="transactions")
