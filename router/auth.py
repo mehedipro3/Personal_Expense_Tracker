@@ -1,6 +1,5 @@
 import os
 from datetime import datetime, timedelta, timezone
-
 import bcrypt
 import jwt
 from dotenv import load_dotenv
@@ -69,7 +68,7 @@ def get_current_user(
     return user
 
 
-# ---------- Routes ----------
+
 @router.post(
     "/register",
     response_model=schemas.UserResponse,
@@ -90,7 +89,7 @@ def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    return new_user  # response_model strips hashed_password
+    return new_user  
 
 
 @router.post("/login", response_model=schemas.Token)
